@@ -1,0 +1,69 @@
+/******************************************************************************
+DoOpen:  use the ifttt "DO" button to open a door.
+    A relay is connected to D3.  When the DO button is activated, a cloud
+    message is sent to a Particle device which activates the relay for
+    the number of milliseconds that is specified in the function call argument 
+    that is configured on the DO button (default is 3 seconds). 
+    An electronic strike plate is then connected to the NO contacts of the 
+    relay to activate the door strike.
+    
+    The Particle "Relay Shield" is a good fit for this project.  It 
+    accomodates a Core or Photon and has 4 relays, of which one is used
+    to activate the electronic door strike.  It also accepts 12 VDC via
+    a barrel jack and supplies the 12 VDC out some screw terminals, which
+    can be used as the power for the electronic door strike (12 VDC
+    models seem to be widely available).
+    
+    To set up a DO button, download and install the IFTTT "DO" app from 
+    the App Store or Play Store.  Create a DO recipe with the action
+    as "call a function" on the Particle IFTTT channel and select the
+    "OpenDoor" cloud function on your Particle device.  Add the time
+    for the relay to close (in milliseconds) as the optional function
+    argument (e.g. 2000 for 2 seconds).  Name this DO button "open door"
+    or whatever is most meaningful to you).
+    
+    
+    by:  Bob Glicksman
+    date: 7/26/2016
+    (c) 2016 by Bob Glicksman.  All rights reserved.
+******************************************************************************/
+const String VERSION = "0.1";
+
+const int BLUE_LED = D7;
+const int DOOR_RELAY = D3;
+const int DEFAULT_OPEN_TIME = 3000;  // trip the latch for 3 seconds
+
+
+void setup() {
+
+    pinMode(DOOR_RELAY, OUTPUT);
+    pinMode(BLUE_LED, OUTPUT);
+
+    Particle.function("OpenDoor", openDoor);
+
+    // blink the D7 LED to show that program is running
+    digitalWrite(BLUE_LED, HIGH);
+    delay(1000);
+    digitalWrite(BLUE_LED, LOW);
+
+}
+
+void loop() {
+    // do nothing
+}
+
+int openDoor(String num) {
+    long duration = num.toInt();
+    if (duration > 0L) {
+        digitalWrite(DOOR_RELAY, HIGH);
+        delay(duration);
+        digitalWrite(DOOR_RELAY, LOW);
+        return 0;
+    } else {		// not a number will result in 0 being returned
+        digitalWrite(DOOR_RELAY, HIGH);
+        delay(DEFAULT_OPEN_TIME);
+        digitalWrite(DOOR_RELAY, LOW);
+        return -1;
+    }
+    
+}
