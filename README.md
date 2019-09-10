@@ -12,3 +12,16 @@ The app that is used to remotely activate the door strike is the "DO" app from I
 This project and all documentation herein is licensed under a Creative Commons license Attribution-Non-Commercial 4.0.  To view a copy of this license, visit http://creativecommons.org/licenses/by-nc/4.0/ or send a letter to Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.  All material is copyright (c) 2016 to Bob Glicksman with terms of use specified in the aforementioned license.
 
 Caution:  This project requires the user to install an electric door strike on a door frame.  Significant carpentry skills and appropriate tools are required to successfully install this product.  Do not attempt this project unless you have access to the necessary tools and skill set.  A sample video about installation of a similar door strike in a wooden door frame can be viewed at:  https://www.youtube.com/watch?v=dImYdCY89CM. 
+
+## Update: 9/09/19
+Added an Android app to replace the IFTTT DO button.  The Android app was created in MIT App Inventor 2 and
+uses the Team Practical Projects Particle_App_Template, which can found at:
+
+https://github.com/TeamPracticalProjects/Particle_App_Template
+
+The Hardware and Firmware remain the same.  To use this app, simply load the .apk file onto your Android device 
+and tap in this file to install it.  When you initially open the app, you will have to go to the Setup screen and
+enter your Particle user name and password where indocated and then serach for devices.  Select the Particle
+Photon device that you are using for this project from the popup list and then exit Setup.  Your device
+should now be permanently selected (until you change it again in Setup) and you can tap the OPEN button to open
+your door with the duration (iin milliseconds) indicated in the textbox to the left of the button.
