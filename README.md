@@ -20,8 +20,11 @@ uses the Team Practical Projects Particle_App_Template, which can found at:
 https://github.com/TeamPracticalProjects/Particle_App_Template
 
 The Hardware and Firmware remain the same.  To use this app, simply load the .apk file onto your Android device 
-and tap in this file to install it.  When you initially open the app, you will have to go to the Setup screen and
-enter your Particle user name and password where indocated and then serach for devices.  Select the Particle
+and tap on this file to install it.  When you initially open the app, you will have to go to the Setup screen and
+enter your Particle user name and password where indicated and then search for devices.  Select the Particle
 Photon device that you are using for this project from the popup list and then exit Setup.  Your device
 should now be permanently selected (until you change it again in Setup) and you can tap the OPEN button to open
-your door with the duration (iin milliseconds) indicated in the textbox to the left of the button.
+your door with the duration (in milliseconds) indicated in the textbox to the left of the button.  The default
+duration is 2 seconds (2000 milliseconds) but you can change this by typing in the number of milliseconds 
+that you desire.  The app will limit your choice to 10 seconds (10,000 ms) maximum.
+
